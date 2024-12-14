@@ -53,6 +53,7 @@
 						<onclick>PlayerControl(Previous)</onclick>
 						<visible>Player.HasSceneMarkers | Player.ChapterCount | Integer.IsGreater(Playlist.Length(video),1) | [Player.SeekEnabled + VideoPlayer.Content(livetv)]</visible>
 					</control>
+					<!--
 					<control type="radiobutton" id="601">
 						<include content="OSDButton">
 							<param name="texture" value="osd/fullscreen/buttons/rewind.png"/>
@@ -61,6 +62,7 @@
 						<onclick condition="!Player.Paused">PlayerControl(Rewind)</onclick>
 						<visible>Player.SeekEnabled + !VideoPlayer.Content(livetv)</visible>
 					</control>
+					-->
 					<control type="group" id="698">
 						<width>76</width>
 						<height>76</height>
@@ -95,6 +97,7 @@
 						</include>
 						<onclick>PlayerControl(Stop)</onclick>
 					</control>
+					<!--
 					<control type="radiobutton" id="606">
 						<include content="OSDButton">
 							<param name="texture" value="osd/fullscreen/buttons/forward.png"/>
@@ -103,6 +106,7 @@
 						<onclick condition="!Player.Paused">PlayerControl(Forward)</onclick>
 						<visible>Player.SeekEnabled + !VideoPlayer.Content(livetv)</visible>
 					</control>
+					-->
 					<control type="radiobutton" id="607">
 						<include content="OSDButton">
 							<param name="texture" value="osd/fullscreen/buttons/next.png"/>
@@ -197,11 +201,10 @@
 					</control>
 					<control type="radiobutton" id="70046">
 						<include content="OSDButton">
-							<param name="texture" value="osd/fullscreen/buttons/streams.png"/>
+							<param name="texture" value="osd/fullscreen/buttons/settings-subtitle.png"/>
 						</include>
-						<onclick>SetProperty(settingsdialog_content,streamselection,home)</onclick>
-						<onclick>SetProperty(settingsdialog_header,$LOCALIZE[13392],home)</onclick>
-						<onclick>ActivateWindow(1101)</onclick>
+						<onclick>ActivateWindow(osdsubtitlesettings)</onclick>
+						<visible>!VideoPlayer.Content(LiveTV) | VideoPlayer.HasSubtitles</visible>
 					</control>
 					<control type="radiobutton" id="70047">
 						<include content="OSDButton">
@@ -216,7 +219,7 @@
 						<include content="OSDButton">
 							<param name="texture" value="osd/fullscreen/buttons/settings.png"/>
 						</include>
-						<onclick>SetProperty(settingsdialog_content,videosettings,home)</onclick>
+						<onclick>SetProperty(settingsdialog_content,osd,home)</onclick>
 						<onclick>SetProperty(settingsdialog_header,$LOCALIZE[5],home)</onclick>
 						<onclick>ActivateWindow(1101)</onclick>
 					</control>
